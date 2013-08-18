@@ -72,7 +72,7 @@ static rootViewController * instance;
     for (int x = 0; x < 10; x++) {
         for (int y = 0; y < 20; y++) {
             UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.backgroundColor = [UIColor whiteColor];
+            button.backgroundColor = [UIColor greenColor];
             button.frame = CGRectMake(x*WIDTH+25, y*WIDTH+35, WIDTH, WIDTH);
             button.layer.cornerRadius=4.0;
             button.layer.borderWidth=1.0;
