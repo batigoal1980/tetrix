@@ -14,6 +14,7 @@
     UIView * baseView;
     baseSquareCase * squreCase, * squreCase2;
     UIButton * beginButton;
+    UIButton * endButton;
     UILabel * scoreLabel;
     UILabel * levelLabel;
     NSUInteger score, level;

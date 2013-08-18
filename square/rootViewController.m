@@ -188,7 +188,7 @@ static rootViewController * instance;
 {
     while (1) {
         
-        [NSThread sleepForTimeInterval:1.0 - (score/200) * 0.05];
+        [NSThread sleepForTimeInterval:0.2 - (score/200) * 0.05];
         [self performSelectorOnMainThread:@selector(doMainSquareMoveDown) withObject:nil waitUntilDone:YES];
     }
 
@@ -280,6 +280,15 @@ static rootViewController * instance;
     [self createCase];
 
 }
+
+-(void)endButtonClick
+{
+    endButton.hidden = YES;
+    endButton.enabled = NO;
+    beginButton.hidden = NO;
+    beginButton.enabled = YES;
+}
+
 -(void)launchView
 {
     beginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -287,6 +296,14 @@ static rootViewController * instance;
     [beginButton setTitle:@"开始" forState:UIControlStateNormal];
     [beginButton addTarget:self action:@selector(beginButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:beginButton];
+    endButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    endButton.frame = CGRectMake(120, 120, 100, 40);
+    [endButton setTitle:@"结束" forState:UIControlStateNormal];
+    [endButton addTarget:self action:@selector(endButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    endButton.hidden = YES;
+    endButton.enabled = NO;
+    [self.view addSubview:endButton];
+    
 }
 
 
@@ -376,6 +393,7 @@ static rootViewController * instance;
 {
     
 }
+
 -(BOOL)checkGameState
 {
     
@@ -395,8 +413,10 @@ static rootViewController * instance;
     [self deleteButton];
     self.squreCase = self.squreCase2;
     if ([self checkGameState]) {
-        beginButton.hidden = NO;
-        beginButton.enabled = YES;
+        if (beginButton.hidden != FALSE) {
+            endButton.hidden = NO;
+            endButton.enabled = YES;
+        }
         return;
     }
 
