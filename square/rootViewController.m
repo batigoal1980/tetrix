@@ -15,7 +15,7 @@
 #import "squarefive.h"
 #import "squareSix.h"
 
-#define WIDTH 20
+#define WIDTH 30
 static rootViewController * instance;
 
 @implementation rootViewController
